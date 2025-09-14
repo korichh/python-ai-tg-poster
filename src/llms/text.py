@@ -31,6 +31,6 @@ class TextLlm:
             return base_message.content
 
         except Exception as exc:
-            logger.error(f"{ErrorType.TEXT_LLM_ERROR}: {str(exc)}")
+            logger.error(f"{ErrorType.TEXT_LLM_ERROR.value}: {str(exc)}")
 
             return None

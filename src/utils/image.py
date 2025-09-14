@@ -4,7 +4,8 @@ import requests
 from aiogram import Bot
 
 from local_types import ErrorType
-from utils import logger
+
+from .logger import logger
 
 
 class ImageUtils:
@@ -28,7 +29,7 @@ class ImageUtils:
             return str(image_path)
 
         except Exception as exc:
-            logger.error(f"{ErrorType.IMAGE_UTILS_ERROR}: {str(exc)}")
+            logger.error(f"{ErrorType.IMAGE_UTILS_ERROR.value}: {str(exc)}")
 
             return None
 
@@ -48,6 +49,6 @@ class ImageUtils:
             return str(image_path)
 
         except Exception as exc:
-            logger.error(f"{ErrorType.IMAGE_UTILS_ERROR}: {str(exc)}")
+            logger.error(f"{ErrorType.IMAGE_UTILS_ERROR.value}: {str(exc)}")
 
             return None

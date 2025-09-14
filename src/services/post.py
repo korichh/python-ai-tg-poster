@@ -18,7 +18,7 @@ class PostService:
             return text, image_url
 
         except Exception as exc:
-            logger.error(f"{ErrorType.POST_UTILS_ERROR}: {str(exc)}")
+            logger.error(f"{ErrorType.POST_SERVICE_ERROR.value}: {str(exc)}")
 
             return None
 
@@ -32,7 +32,7 @@ class PostService:
             return text, image_url
 
         except Exception as exc:
-            logger.error(f"{ErrorType.POST_UTILS_ERROR}: {str(exc)}")
+            logger.error(f"{ErrorType.POST_SERVICE_ERROR.value}: {str(exc)}")
 
             return None
 
@@ -46,7 +46,7 @@ class PostService:
             return text, image_url
 
         except Exception as exc:
-            logger.error(f"{ErrorType.POST_UTILS_ERROR}: {str(exc)}")
+            logger.error(f"{ErrorType.POST_SERVICE_ERROR.value}: {str(exc)}")
 
             return None
 
@@ -60,6 +60,6 @@ class PostService:
             return text, image_url
 
         except Exception as exc:
-            logger.error(f"{ErrorType.POST_UTILS_ERROR}: {str(exc)}")
+            logger.error(f"{ErrorType.POST_SERVICE_ERROR.value}: {str(exc)}")
 
             return None

@@ -16,4 +16,4 @@ async def start_command(message: types.Message):
 
     except Exception as exc:
         await message.answer("An unexpected error occured. Please check the logs.")
-        logger.error(f"{ErrorType.START_COMMAND_ERROR}: {str(exc)}")
+        logger.error(f"{ErrorType.START_COMMAND_ERROR.value}: {str(exc)}")

@@ -49,6 +49,6 @@ class PostRepository:
                 wb.save(PostRepository.posts_file)
 
         except Exception as exc:
-            logger.error(f"{ErrorType.POST_SERVICE_ERROR}: {str(exc)}")
+            logger.error(f"{ErrorType.POST_REPOSITORY_ERROR.value}: {str(exc)}")
 
             return None

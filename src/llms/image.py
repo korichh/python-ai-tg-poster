@@ -22,6 +22,6 @@ class ImageLlm:
             return ImageLlm.llm.run(topic_image)
 
         except Exception as exc:
-            logger.error(f"{ErrorType.IMAGE_LLM_ERROR}: {str(exc)}")
+            logger.error(f"{ErrorType.IMAGE_LLM_ERROR.value}: {str(exc)}")
 
             return None

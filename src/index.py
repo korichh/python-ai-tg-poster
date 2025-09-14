@@ -17,13 +17,13 @@ async def main():
         dp = Dispatcher(storage=storage)
 
         init_commands(dp)
-        asyncio.create_task(init_jobs())
+        asyncio.create_task(init_jobs(bot))
 
         logger.info("Bot started")
         await dp.start_polling(bot)
 
     except Exception as exc:
-        logger.error(f"{ErrorType.MAIN_ERROR}: {str(exc)}")
+        logger.error(f"{ErrorType.MAIN_ERROR.value}: {str(exc)}")
 
     finally:
         await bot.session.close()

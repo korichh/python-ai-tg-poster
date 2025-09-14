@@ -23,7 +23,7 @@ async def post_command(message: types.Message, state: FSMContext):
 
     except Exception as exc:
         await message.answer("An unexpected error occured. Please check the logs.")
-        logger.error(f"{ErrorType.POST_COMMAND_ERROR}: {str(exc)}")
+        logger.error(f"{ErrorType.POST_COMMAND_ERROR.value}: {str(exc)}")
 
 
 @router.message(F.text | F.photo, PostStates.waiting_for_post)
@@ -51,4 +51,4 @@ async def receive_post(message: types.Message, state: FSMContext):
 
     except Exception as exc:
         await message.answer("An unexpected error occured. Please check the logs.")
-        logger.error(f"{ErrorType.POST_MESSAGE_ERROR}: {str(exc)}")
+        logger.error(f"{ErrorType.POST_MESSAGE_ERROR.value}: {str(exc)}")

@@ -60,7 +60,7 @@ class QueueRepository:
             await QueueRepository._update_queue(queue)
 
         except Exception as exc:
-            logger.error(f"{ErrorType.QUEUE_SERVICE_ERROR}: {str(exc)}")
+            logger.error(f"{ErrorType.QUEUE_SERVICE_ERROR.value}: {str(exc)}")
 
             return None
 
@@ -81,6 +81,6 @@ class QueueRepository:
             return None
 
         except Exception as exc:
-            logger.error(f"{ErrorType.QUEUE_SERVICE_ERROR}: {str(exc)}")
+            logger.error(f"{ErrorType.QUEUE_REPOSITORY_ERROR.value}: {str(exc)}")
 
             return None
