@@ -1,0 +1,6 @@
+.venv
+database
+old
+public
+.env
+__pycache__

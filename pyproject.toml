@@ -1,0 +1,6 @@
+[tool.ruff]
+
+[tool.ruff.lint]
+extend-select = ["E", "F", "I"]
+
+[tool.ruff.format]
