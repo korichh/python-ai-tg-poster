@@ -1,30 +1,32 @@
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai.chat_models import ChatOpenAI
 
-from config import LLM
+from ai.prompts import text_llm_human_message, text_llm_system_message
+from config import llmConfig
 from constants import ENV
 from local_types import ErrorType
-from prompts import text_llm_human_message, text_llm_system_message
 from utils import logger
 
 
-class TextLlm:
-    config = LLM["text"]
+class TextChain:
+    config = llmConfig["text"]
 
     llm = ChatOpenAI(
         model=config["model"],
         temperature=config["temperature"],
-        api_key=ENV["openai_api_key"],
+        api_key=ENV["OPENAI_API_KEY"],
     )
+
     prompt = ChatPromptTemplate.from_messages(
         [("system", text_llm_system_message), ("human", text_llm_human_message)]
     )
+
     chain = prompt | llm
 
     @staticmethod
     def invoke(context: str, topic_text: str) -> str | None:
         try:
-            base_message = TextLlm.chain.invoke(
+            base_message = TextChain.chain.invoke(
                 {"context": context, "topic_text": topic_text}
             )
 

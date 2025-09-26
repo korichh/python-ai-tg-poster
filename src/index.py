@@ -1,4 +1,5 @@
 import asyncio
+import signal
 
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
@@ -7,12 +8,15 @@ from commands import init_commands
 from constants import ENV
 from jobs import init_jobs
 from local_types import ErrorType
-from utils import logger
+from utils import logger, stop_app
 
 
 async def main():
     try:
-        bot = Bot(token=ENV["telegram_bot_token"])
+        signal.signal(signal.SIGINT, stop_app)
+        signal.signal(signal.SIGTERM, stop_app)
+
+        bot = Bot(token=ENV["TELEGRAM_BOT_TOKEN"])
         storage = MemoryStorage()
         dp = Dispatcher(storage=storage)
 

@@ -1,4 +1,4 @@
-from typing import TypedDict
+from typing import Dict, Literal, TypedDict
 
 
 class ImageConfig(TypedDict):
@@ -15,3 +15,14 @@ class TextConfig(TypedDict):
 class LlmConfig(TypedDict):
     image: ImageConfig
     text: TextConfig
+
+
+PostTopic = Literal["analytics", "news", "meme"]
+
+
+class TopicConfig(TypedDict):
+    text: str
+    image: str
+
+
+PostConfig = Dict[PostTopic, TopicConfig]

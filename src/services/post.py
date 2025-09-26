@@ -1,5 +1,5 @@
-from config import POST
-from llms import ImageLlm, TextLlm
+from ai.chains import ImageChain, TextChain
+from config import postConfig
 from local_types import ErrorType, PostTopic
 from utils import logger
 
@@ -8,12 +8,12 @@ class PostService:
     @staticmethod
     def create_post(context: str, post_topic: PostTopic) -> tuple[str, str] | None:
         try:
-            topic_config = POST[post_topic]
+            topic_config = postConfig[post_topic]
             topic_text = topic_config["text"]
             topic_image = topic_config["image"]
 
-            text = TextLlm.invoke(context, topic_text)
-            image_url = ImageLlm.invoke(topic_image)
+            text = TextChain.invoke(context, topic_text)
+            image_url = ImageChain.invoke(topic_image)
 
             return text, image_url
 

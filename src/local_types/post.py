@@ -1,14 +1,4 @@
-from typing import Dict, Literal, TypedDict
-
-PostTopic = Literal["analytics", "news", "meme"]
-
-
-class TopicConfig(TypedDict):
-    text: str
-    image: str
-
-
-PostConfig = Dict[PostTopic, TopicConfig]
+from typing import TypedDict
 
 
 class Post(TypedDict):
