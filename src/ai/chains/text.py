@@ -24,10 +24,10 @@ class TextChain:
     chain = prompt | llm
 
     @staticmethod
-    def invoke(context: str, instruction: str) -> str | None:
+    def invoke(context: str, instructions: str) -> str | None:
         try:
             base_message = TextChain.chain.invoke(
-                {"context": context, "instruction": instruction}
+                {"context": context, "instructions": instructions}
             )
 
             return base_message.content
