@@ -50,7 +50,7 @@ class QueueRepository:
                 await QueueRepository._create_queue_file()
 
     @staticmethod
-    async def add_post(text: str, photo_id: str) -> None:
+    async def add_post(text: str, photo_id: str | None) -> None:
         try:
             await QueueRepository._ensure_queue_file()
 

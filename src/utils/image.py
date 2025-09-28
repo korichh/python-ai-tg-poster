@@ -17,10 +17,13 @@ class ImageUtils:
 
     @staticmethod
     async def save_telegram_image(
-        bot: Bot, photo_id: str, image_name: str
+        bot: Bot, photo_id: str | None, image_name: str
     ) -> str | None:
         try:
             ImageUtils._ensure_images_dir()
+
+            if photo_id is None:
+                return None
 
             image_path = ImageUtils.images_dir / f"{image_name}.jpg"
 

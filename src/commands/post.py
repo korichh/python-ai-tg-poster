@@ -29,7 +29,9 @@ async def post_command(message: types.Message, state: FSMContext):
 @router.message(F.text | F.photo, PostStates.waiting_for_post)
 async def receive_post(message: types.Message, state: FSMContext):
     try:
-        photo = message.photo[-1] if message.photo else None
+        photo_id = (
+            message.photo[-1].file_id if getattr(message, "photo", None) else None
+        )
         text = message.caption or message.text
 
         if not text:
@@ -39,7 +41,7 @@ async def receive_post(message: types.Message, state: FSMContext):
 
             return
 
-        QueueRepository.add_post(text, photo.file_id)
+        await QueueRepository.add_post(text, photo_id)
 
         logger.info("New post added to the queue")
 

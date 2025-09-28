@@ -4,6 +4,7 @@ from aiogram import Bot
 
 from local_types import ErrorType
 from repositories import PostRepository, QueueRepository
+from services import ChannelService
 from utils import ImageUtils, logger
 
 
@@ -24,7 +25,7 @@ class QueueJob:
                 bot, post["photo_id"], image_name
             )
 
-            # await ChannelService.publish_post(text, image_path)
+            await ChannelService.publish_post(bot, post["text"], image_path)
 
             await PostRepository.add_post(date, post["text"], image_path)
 

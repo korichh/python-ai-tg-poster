@@ -5,7 +5,7 @@ from aiogram import Bot
 
 from local_types import ErrorType
 from repositories import PostRepository
-from services import PostService
+from services import ChannelService, PostService
 from utils import ImageUtils, logger
 
 
@@ -21,7 +21,7 @@ class PostJob:
 
             image_path = ImageUtils.save_llm_image(image_url, image_name)
 
-            # await ChannelService.publish_post(text, image_path)
+            await ChannelService.publish_post(bot, text, image_path)
 
             await PostRepository.add_post(date, text, image_path)
 
@@ -48,7 +48,7 @@ class PostJob:
 
             image_path = ImageUtils.save_llm_image(image_url, image_name)
 
-            # await ChannelService.publish_post(text, image_path)
+            await ChannelService.publish_post(bot, text, image_path)
 
             await PostRepository.add_post(date, text, image_path)
 

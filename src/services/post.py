@@ -25,7 +25,7 @@ class PostService:
     @staticmethod
     def create_analytics_post() -> tuple[str, str] | None:
         try:
-            context = "Empty Context"
+            context = "Write about BTCUSD, SOLUSD and ETHUSD"
 
             text, image_url = PostService.create_post(context, "analytics")
 
@@ -39,7 +39,7 @@ class PostService:
     @staticmethod
     def create_news_post() -> tuple[str, str] | None:
         try:
-            context = "Empty Context"
+            context = "Write about BTCUSD, SOLUSD and ETHUSD"
 
             text, image_url = PostService.create_post(context, "news")
 
@@ -53,7 +53,7 @@ class PostService:
     @staticmethod
     def create_meme_post() -> tuple[str, str] | None:
         try:
-            context = "Empty Context"
+            context = "Write about BTCUSD, SOLUSD and ETHUSD"
 
             text, image_url = PostService.create_post(context, "meme")
 

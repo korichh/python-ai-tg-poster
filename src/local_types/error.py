@@ -19,5 +19,6 @@ class ErrorType(Enum):
 
     POST_SERVICE_ERROR = "post_service_error"
     QUEUE_SERVICE_ERROR = "queue_service_error"
+    CHANNEL_SERVICE_ERROR = "channel_service_error"
 
     IMAGE_UTILS_ERROR = "image_utils_error"
