@@ -1,4 +1,4 @@
-from config import safeMaxPostTextChars
+from config.ai.text import safeMaxPostTextChars
 
 text_llm_system_message = f"""# Role and Objective
 

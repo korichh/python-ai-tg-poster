@@ -1,4 +1,4 @@
-from ai.chains import ImageChain, TextChain
+from ai import ImageChain, TextChain
 from config import postConfig
 from local_types import ErrorType, PostTopic
 from utils import logger
