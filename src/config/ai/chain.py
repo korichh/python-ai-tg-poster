@@ -14,7 +14,7 @@ llmConfig: LlmConfig = {
         "size": "1024x1024",
         "quality": "standard",
     },
-    "text": {"model": "gpt-4o", "temperature": 0.7},
+    "text": {"model": "gpt-4o-mini", "temperature": 0.7},
 }
 
 

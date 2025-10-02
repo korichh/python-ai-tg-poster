@@ -1,7 +1,8 @@
 from ai import ImageChain, TextChain
 from config import postConfig
-from local_types import ErrorType, PostTopic
-from utils import logger
+from local_types import ErrorType, NewsItem, PostTopic
+from services import CoindeskService
+from utils import format_news_context, logger
 
 
 class PostService:
@@ -13,9 +14,9 @@ class PostService:
             topic_image = topic_config["image"]
 
             text = TextChain.invoke(context, topic_text)
-            image_url = ImageChain.invoke(topic_image)
+            # image_url = ImageChain.invoke(topic_image)
 
-            return text, image_url
+            return text, None
 
         except Exception as exc:
             logger.error(f"{ErrorType.POST_SERVICE_ERROR.value}: {str(exc)}")
@@ -23,7 +24,7 @@ class PostService:
             return None
 
     @staticmethod
-    def create_analytics_post() -> tuple[str, str] | None:
+    async def create_analytics_post() -> tuple[str, str] | None:
         try:
             context = "Write about BTCUSD, SOLUSD and ETHUSD"
 
@@ -42,9 +43,21 @@ class PostService:
             return None
 
     @staticmethod
-    def create_news_post() -> tuple[str, str] | None:
+    async def create_news_post() -> tuple[str, str] | None:
         try:
-            context = "Write about BTCUSD, SOLUSD and ETHUSD"
+            cryptos = ["Bitcoin crypto", "Solana crypto", "Ethereum crypto"]
+
+            news_results: list[tuple[str, list[NewsItem]]] = []
+
+            for coin in cryptos:
+                news = await CoindeskService.search_news(coin, 2)
+
+                if news is None:
+                    return
+
+                news_results.append((coin, news))
+
+            context = format_news_context(news_results)
 
             post = PostService.create_post(context, "news")
 
@@ -61,7 +74,7 @@ class PostService:
             return None
 
     @staticmethod
-    def create_meme_post() -> tuple[str, str] | None:
+    async def create_meme_post() -> tuple[str, str] | None:
         try:
             context = "Write about BTCUSD, SOLUSD and ETHUSD"
 

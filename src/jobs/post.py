@@ -17,7 +17,7 @@ class PostJob:
             date = created_at.strftime("%Y-%m-%d %H:%M:%S")
             image_name = created_at.strftime("%Y-%m-%d_%H-%M-%S")
 
-            analytics_post = PostService.create_analytics_post()
+            analytics_post = await PostService.create_analytics_post()
 
             if analytics_post is None:
                 return
@@ -47,9 +47,9 @@ class PostJob:
             post_topic = random.choice(["news", "meme"])
 
             if post_topic == "news":
-                news_meme_post = PostService.create_news_post()
+                news_meme_post = await PostService.create_news_post()
             else:
-                news_meme_post = PostService.create_meme_post()
+                news_meme_post = await PostService.create_meme_post()
 
             if news_meme_post is None:
                 return

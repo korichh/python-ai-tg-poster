@@ -10,9 +10,18 @@ from jobs import init_jobs
 from local_types import ErrorType
 from utils import logger, stop_app
 
+# from services import PostService
+
 
 async def main():
     try:
+        # news_post = await PostService.create_news_post()
+
+        # if news_post is not None:
+        #     text, image_url = news_post
+
+        #     print(text, image_url)
+
         signal.signal(signal.SIGINT, stop_app)
         signal.signal(signal.SIGTERM, stop_app)
 
