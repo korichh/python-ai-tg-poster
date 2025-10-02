@@ -32,15 +32,3 @@ postConfig: PostConfig = {
         "image": meme_image_prompt,
     },
 }
-
-# {
-#     "type": "web_search_preview",
-#     "search_context_size": "medium",
-#     "user_location": {
-#         "type": "approximate",
-#         "city": null,
-#         "country": "US",
-#         "region": null,
-#         "timezone": null,
-#     },
-# }

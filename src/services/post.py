@@ -27,7 +27,12 @@ class PostService:
         try:
             context = "Write about BTCUSD, SOLUSD and ETHUSD"
 
-            text, image_url = PostService.create_post(context, "analytics")
+            post = PostService.create_post(context, "analytics")
+
+            if post is None:
+                return None
+
+            text, image_url = post
 
             return text, image_url
 
@@ -41,7 +46,12 @@ class PostService:
         try:
             context = "Write about BTCUSD, SOLUSD and ETHUSD"
 
-            text, image_url = PostService.create_post(context, "news")
+            post = PostService.create_post(context, "news")
+
+            if post is None:
+                return None
+
+            text, image_url = post
 
             return text, image_url
 
@@ -55,7 +65,12 @@ class PostService:
         try:
             context = "Write about BTCUSD, SOLUSD and ETHUSD"
 
-            text, image_url = PostService.create_post(context, "meme")
+            post = PostService.create_post(context, "meme")
+
+            if post is None:
+                return None
+
+            text, image_url = post
 
             return text, image_url
 

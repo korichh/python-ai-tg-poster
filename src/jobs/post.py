@@ -17,7 +17,12 @@ class PostJob:
             date = created_at.strftime("%Y-%m-%d %H:%M:%S")
             image_name = created_at.strftime("%Y-%m-%d_%H-%M-%S")
 
-            text, image_url = PostService.create_analytics_post()
+            analytics_post = PostService.create_analytics_post()
+
+            if analytics_post is None:
+                return
+
+            text, image_url = analytics_post
 
             image_path = ImageUtils.save_llm_image(image_url, image_name)
 
@@ -42,9 +47,14 @@ class PostJob:
             post_topic = random.choice(["news", "meme"])
 
             if post_topic == "news":
-                text, image_url = PostService.create_news_post()
+                news_meme_post = PostService.create_news_post()
             else:
-                text, image_url = PostService.create_meme_post()
+                news_meme_post = PostService.create_meme_post()
+
+            if news_meme_post is None:
+                return
+
+            text, image_url = news_meme_post
 
             image_path = ImageUtils.save_llm_image(image_url, image_name)
 

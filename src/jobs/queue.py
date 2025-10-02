@@ -19,7 +19,7 @@ class QueueJob:
             post = await QueueRepository.pop_post()
 
             if post is None:
-                return None
+                return
 
             image_path = await ImageUtils.save_telegram_image(
                 bot, post["photo_id"], image_name
