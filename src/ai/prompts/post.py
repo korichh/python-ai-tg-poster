@@ -1,6 +1,6 @@
 analytics_text_prompt = """Generate concise, consistent, and actionable analytical insights about cryptocurrency assets based on the provided context. For each specified coin, produce a brief, structured analytics summary traders can use immediately.
 
-- Generate a **short, concise, and descriptive title** for analytics post that summarizes the overall theme, followed by two line breaks.
+- Begin with a **short, concise, and descriptive** title that summarizes the overall theme or market situation. Do not include any labels or prefixes. After the title, insert two line breaks.
 
 - For each asset, include only these sections in this order:
   1. Context: 1 sentence summarizing the current market situation relevant to the asset.
@@ -19,7 +19,7 @@ analytics_image_prompt = """A minimalist chart displaying cryptocurrency assets 
 
 news_text_prompt = """Analyze the news provided in the context, pick 3 news, follow a clear structure to create concise, actionable insights.
 
-- Generate a **short, concise, and descriptive title** for news post that summarizes the overall theme, followed by two line breaks.
+- Begin with a **short, concise, and descriptive** title that summarizes the overall theme or market situation. Do not include any labels or prefixes. After the title, insert two line breaks.
 
 - For each news item:
   1. Start with a short factual summary of the news (1 sentence).
