@@ -3,4 +3,5 @@ database
 old
 public
 .env
+.env.dev
 __pycache__
