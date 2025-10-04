@@ -14,9 +14,9 @@ class PostService:
             topic_image = topic_config["image"]
 
             text = TextChain.invoke(context, topic_text)
-            # image_url = ImageChain.invoke(topic_image)
+            image_url = ImageChain.invoke(topic_image)
 
-            return text, None
+            return text, image_url
 
         except Exception as exc:
             logger.error(f"{ErrorType.POST_SERVICE_ERROR.value}: {str(exc)}")

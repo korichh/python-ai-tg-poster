@@ -9,6 +9,7 @@ analytics_text_prompt = """Generate concise, consistent, and actionable analytic
   4. Stop-Losses: Recommend stop-loss levels.
   5. Movement Scenario: Provide a conditional if/then prediction—e.g., "If price breaks [level], then expect [target]."
 
+- Between section insert two line breaks
 - Write in clear, professional numbered list for each asset.
 - Avoid filler, verbosity, or promotional language.
 - Ensure all insights are precise, practical, and actionable.
