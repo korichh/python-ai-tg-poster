@@ -1,8 +1,8 @@
 from ai import ImageChain, TextChain
 from config import postConfig
-from local_types import ErrorType, NewsItem, PostTopic
+from local_types import ErrorType, PostTopic
 from services import CoindeskService
-from utils import format_news_context, logger
+from utils import format_analytics_context, format_news_context, logger
 
 
 class PostService:
@@ -26,7 +26,17 @@ class PostService:
     @staticmethod
     async def create_analytics_post() -> tuple[str, str] | None:
         try:
-            context = "Write about BTCUSD, SOLUSD and ETHUSD"
+            coins = ["BTCUSDT", "ETHUSDT", "SOLUSDT"]
+
+            metadata = await CoindeskService.get_instruments_metadata(coins)
+            latest_tick = await CoindeskService.get_instruments_latest_tick(coins)
+            historical_prices = await CoindeskService.get_instruments_historical_prices(
+                coins
+            )
+
+            context = format_analytics_context(
+                coins, metadata, latest_tick, historical_prices
+            )
 
             post = PostService.create_post(context, "analytics")
 
@@ -45,19 +55,11 @@ class PostService:
     @staticmethod
     async def create_news_post() -> tuple[str, str] | None:
         try:
-            cryptos = ["Bitcoin crypto", "Solana crypto", "Ethereum crypto"]
+            coins = ["Bitcoin crypto", "Ethereum crypto", "Solana crypto"]
 
-            news_results: list[tuple[str, list[NewsItem]]] = []
+            news = await CoindeskService.get_instruments_news(coins)
 
-            for coin in cryptos:
-                news = await CoindeskService.search_news(coin, 2)
-
-                if news is None:
-                    return
-
-                news_results.append((coin, news))
-
-            context = format_news_context(news_results)
+            context = format_news_context(news)
 
             post = PostService.create_post(context, "news")
 
@@ -76,9 +78,7 @@ class PostService:
     @staticmethod
     async def create_meme_post() -> tuple[str, str] | None:
         try:
-            context = "Write about BTCUSD, SOLUSD and ETHUSD"
-
-            post = PostService.create_post(context, "meme")
+            post = PostService.create_post("Trading", "meme")
 
             if post is None:
                 return None
